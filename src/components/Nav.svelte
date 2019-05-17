@@ -67,7 +67,7 @@
   
 
     <a
-      href="#void"
+      href="javascript:;"
       role="button"
       class="navbar-burger burger"
       aria-label="menu"
