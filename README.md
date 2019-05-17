@@ -23,4 +23,4 @@ This CRUD uses northwind API: http://northwind.now.sh
 
 ## Roadmap
 
-See #1
+See this [issue](https://github.com/danielschmitz/svelte-sapper-bulma-crud/issues/1)
