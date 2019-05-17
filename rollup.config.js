@@ -28,6 +28,7 @@ export default {
 			}),
 			resolve(),
 			commonjs(),
+			json(),
 
 			legacy && babel({
 				extensions: ['.js', '.mjs', '.html', '.svelte'],

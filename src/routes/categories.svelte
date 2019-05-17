@@ -1,14 +1,21 @@
 <script>
   import Card from "../components/Card.svelte";
   import { onMount } from "svelte";
+  // import http from "../http";
 
   let categories = [];
+  let category = {};
+
+  let modalIsVisible = false;
+
+  $: modalClass = modalIsVisible === true ? "modal is-active" : "modal";
 
   onMount(async () => {
     categories = getCategories();
   });
 
   async function getCategories() {
+    // a simple use of "fetch"
     const result = await fetch("https://northwind.now.sh/api/categories");
 
     if (result.ok) return result.json();
@@ -19,7 +26,32 @@
   }
 
   function onItemClick(item) {
-    console.log("onItemClick", item);
+    category = item;
+    modalIsVisible = true;
+  }
+
+  function onDeleteClick(item) {
+    category = item;
+    modalIsVisible = true;
+  }
+
+  function closeModal() {
+    modalIsVisible = false;
+  }
+
+  async function save() {
+    // try {
+    //   let result = await http({
+    //     method: category.id ? "put" : "post",
+    //     url: category.id
+    //       ? `/category/${category.id}`
+    //       : "/category",
+    //     category
+    //   })
+
+    // } catch (error) {
+    //   console.log(error)
+    // }
   }
 </script>
 
@@ -49,13 +81,13 @@
               <td>{item.name}</td>
               <td>{item.description}</td>
               <td>
-                <a href="javascript;" on:click={()=>onItemClick(item)}>
+                <a href="javascript:;" on:click={() => onItemClick(item)}>
                   <span class="icon is-small">
                     <i class="fas fa-edit" />
                   </span>
                 </a>
-                &nbsp;
-                 <a href="javascript;" on:click={()=>onDeleteClick(item)}>
+
+                <a href="javascript:;" on:click={() => onDeleteClick(item)}>
                   <span class="icon is-small">
                     <i class="fas fa-trash" />
                   </span>
@@ -72,4 +104,38 @@
   </div>
 </Card>
 
-
+<div class={modalClass}>
+  <div class="modal-background" />
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">{category.name}</p>
+      <button class="delete" aria-label="close" on:click={closeModal} />
+    </header>
+    <section class="modal-card-body">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            placeholder=""
+            bind:value={category.name} />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            placeholder=""
+            bind:value={category.description} />
+        </div>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" on:click={save}>Save changes</button>
+      <button class="button" on:click={closeModal}>Cancel</button>
+    </footer>
+  </div>
+</div>
