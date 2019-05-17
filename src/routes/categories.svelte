@@ -1,27 +1,27 @@
-<svelte:head>
-  <title>Categories</title>
-</svelte:head>
-
 <script>
   import Card from "../components/Card.svelte";
   import { onMount } from "svelte";
+
+  let categories = [];
 
   onMount(async () => {
     categories = getCategories();
   });
 
-  let categories = [];
-
   async function getCategories() {
     const result = await fetch("https://northwind.now.sh/api/categories");
-    
+
     if (result.ok) return result.json();
 
     throw new Error(
-      `Catastrofic failure ${result.status} ${result.statusText}`
+      `🚨 Catastrofic failure 🚨 ${result.status} ${result.statusText}`
     );
   }
 </script>
+
+<svelte:head>
+  <title>Categories</title>
+</svelte:head>
 
 <Card>
   <span slot="title">Categories</span>
