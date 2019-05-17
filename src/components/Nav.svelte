@@ -96,7 +96,7 @@
       <div class="navbar-item">
         <div class="buttons">
           <a
-            href="http://www.github.com/danielschmitz/sapper-bulma-crud"
+            href="https://github.com/danielschmitz/svelte-sapper-bulma-crud"
             target="_blank"
             class="button is-light">
             GitHub
