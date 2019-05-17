@@ -1,21 +1,27 @@
+<svelte:head>
+  <title>Categories</title>
+</svelte:head>
+
 <script>
   import Card from "../components/Card.svelte";
   import { onMount } from "svelte";
 
   onMount(async () => {
-	categories = getCategories()
+    categories = getCategories();
   });
 
-  let categories = []
+  let categories = [];
 
   async function getCategories() {
-    return await fetch("https://northwind.now.sh/api/categories").then(r => r.json());
+    const result = await fetch("https://northwind.now.sh/api/categories");
+    
+    if (result.ok) return result.json();
+
+    throw new Error(
+      `Catastrofic failure ${result.status} ${result.statusText}`
+    );
   }
 </script>
-
-<svelte:head>
-  <title>Categories</title>
-</svelte:head>
 
 <Card>
   <span slot="title">Categories</span>
@@ -24,11 +30,23 @@
     {#await categories}
       <progress class="progress is-small is-primary" max="100">15%</progress>
     {:then list}
-      <ul>
-        {#each list as item}
-          <li>{item.name}</li>
-        {/each}
-      </ul>
+
+      <table class="table is-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {#each list as item}
+            <tr>
+              <td>{item.name}</td>
+              <td>{item.description}</td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
     {:catch error}
       <p style="color: red">{error.message}</p>
     {/await}
