@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "svelte-sapper-bulma-crud",
+  "description": "A CRUD with Svelte, Sapper and Bulma",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
