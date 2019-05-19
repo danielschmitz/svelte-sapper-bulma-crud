@@ -1,7 +1,7 @@
 <script>
   import Card from "../components/Card.svelte";
   import { onMount } from "svelte";
-  // import http from "../http";
+  import http from "../http";
 
   let categories = [];
   let category = {};
@@ -40,18 +40,20 @@
   }
 
   async function save() {
-    // try {
-    //   let result = await http({
-    //     method: category.id ? "put" : "post",
-    //     url: category.id
-    //       ? `/category/${category.id}`
-    //       : "/category",
-    //     category
-    //   })
+    try {
+      let result = await http({
+        method: category.id ? "put" : "post",
+        url: category.id
+          ? `/categories/${category.id}`
+          : "/categories",
+        data: category
+      })
+      categories = getCategories();
+      closeModal();
 
-    // } catch (error) {
-    //   console.log(error)
-    // }
+    } catch (error) {
+      console.log(error)
+    }
   }
 </script>
 
