@@ -49,7 +49,7 @@ module.exports = {
 		output: config.server.output(),
 		target: 'node',
 		resolve: { extensions, mainFields },
-		externals: Object.keys(pkg.dependencies).concat('encoding'),
+		//externals: Object.keys(pkg.dependencies).concat('encoding'),
 		module: {
 			rules: [
 				{
@@ -62,6 +62,10 @@ module.exports = {
 							dev
 						}
 					}
+				},
+				{
+					test: /\.css$/,
+					use: [ 'style-loader', 'css-loader' ]
 				}
 			]
 		},
