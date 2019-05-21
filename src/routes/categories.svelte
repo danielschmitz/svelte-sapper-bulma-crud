@@ -6,10 +6,12 @@
   let categories = [];
   let category = {};
 
+  let buttonSaveIsLoading = false
+  $: buttonSaveClass = buttonSaveIsLoading === true ? 'button is-success is-loading' : 'button is-success'
+
   let modalIsVisible = false;
-
   $: modalClass = modalIsVisible === true ? "modal is-active" : "modal";
-
+  
   onMount(async () => {
     categories = getCategories();
   });
@@ -41,6 +43,7 @@
 
   async function save() {
     try {
+      buttonSaveIsLoading = true
       let result = await http({
         method: category.id ? "put" : "post",
         url: category.id
@@ -53,6 +56,8 @@
 
     } catch (error) {
       console.log(error)
+    } finally {
+      buttonSaveIsLoading = false
     }
   }
 </script>
@@ -135,7 +140,7 @@
       </div>
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-success" on:click={save}>Save changes</button>
+      <button class="{buttonSaveClass}" on:click={save}>Save changes</button>
       <button class="button" on:click={closeModal}>Cancel</button>
     </footer>
   </div>
