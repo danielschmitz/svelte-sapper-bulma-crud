@@ -35,9 +35,12 @@
     openModal();
   }
 
-  function onDeleteClick(item) {
+  async function onDeleteClick(item) {
     category = item;
-    openModal();
+    if (confirm(`Delete "${category.name}"?`)){
+      await http.delete(`/categories/${category.id}`)
+      categories = getCategories();
+    }
   }
 
   function closeModal() {
