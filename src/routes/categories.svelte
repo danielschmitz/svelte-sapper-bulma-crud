@@ -6,12 +6,15 @@
   let categories = [];
   let category = {};
 
-  let buttonSaveIsLoading = false
-  $: buttonSaveClass = buttonSaveIsLoading === true ? 'button is-success is-loading' : 'button is-success'
+  let buttonSaveIsLoading = false;
+  $: buttonSaveClass =
+    buttonSaveIsLoading === true
+      ? "button is-success is-loading"
+      : "button is-success";
 
   let modalIsVisible = false;
   $: modalClass = modalIsVisible === true ? "modal is-active" : "modal";
-  
+
   onMount(async () => {
     categories = getCategories();
   });
@@ -29,35 +32,44 @@
 
   function onItemClick(item) {
     category = item;
-    modalIsVisible = true;
+    openModal();
   }
 
   function onDeleteClick(item) {
     category = item;
-    modalIsVisible = true;
+    openModal();
   }
 
   function closeModal() {
     modalIsVisible = false;
   }
 
+  function openModal() {
+    modalIsVisible = true;
+  }
+
+  function onNewClick() {
+    category = {
+      name: '',
+      description: ''
+    }
+    openModal()
+  }
+
   async function save() {
     try {
-      buttonSaveIsLoading = true
+      buttonSaveIsLoading = true;
       let result = await http({
         method: category.id ? "put" : "post",
-        url: category.id
-          ? `/categories/${category.id}`
-          : "/categories",
+        url: category.id ? `/categories/${category.id}` : "/categories",
         data: category
-      })
+      });
       categories = getCategories();
       closeModal();
-
     } catch (error) {
-      console.log(error)
+      console.log(error);
     } finally {
-      buttonSaveIsLoading = false
+      buttonSaveIsLoading = false;
     }
   }
 </script>
@@ -108,6 +120,7 @@
     {/await}
 
   </div>
+    <a href="javascript:;" slot="footer" class="card-footer-item" on:click={onNewClick}>New</a>
 </Card>
 
 <div class={modalClass}>
@@ -140,7 +153,7 @@
       </div>
     </section>
     <footer class="modal-card-foot">
-      <button class="{buttonSaveClass}" on:click={save}>Save changes</button>
+      <button class={buttonSaveClass} on:click={save}>Save changes</button>
       <button class="button" on:click={closeModal}>Cancel</button>
     </footer>
   </div>
