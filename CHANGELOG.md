@@ -1,3 +1,13 @@
+#### 0.0.2 (2019-05-21)
+
+##### New Features
+
+*  Delete category (ec56aaf4)
+
+##### Bug Fixes
+
+*  changelog v0.0.1 duplicated (6d434c42)
+
 #### 0.0.1 (2019-05-21)
 
 ##### Documentation Changes
