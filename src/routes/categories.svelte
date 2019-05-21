@@ -61,8 +61,7 @@
   <title>Categories</title>
 </svelte:head>
 
-<Card>
-  <span slot="title">Categories</span>
+<Card title="Categories">
   <div>
 
     {#await categories}

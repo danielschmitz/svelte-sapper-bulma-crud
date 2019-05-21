@@ -1,7 +1,11 @@
+<script>
+export let title=""
+</script>
+
 <div class="card">
   <header class="card-header">
     <p class="card-header-title">
-      <slot name="title" />
+      {title}
     </p>
   </header>
   <div class="card-content">
