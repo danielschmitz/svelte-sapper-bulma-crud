@@ -6,6 +6,7 @@
     "dev": "sapper dev",
     "now": "sapper build && now",
     "b": "sapper build",
+    "changelog": "npx changelog",
     "export": "sapper export",
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
