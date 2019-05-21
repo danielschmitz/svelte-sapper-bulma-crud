@@ -6,8 +6,7 @@
 import  Card  from '../components/Card.svelte'
 </script>
 
-<Card>
-	<span slot="title">About</span>
+<Card title="About">
 	<div>
 		This is the 'about' page. There's not much here.
 	</div>
