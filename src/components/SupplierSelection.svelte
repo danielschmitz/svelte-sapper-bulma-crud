@@ -20,7 +20,7 @@
   {:then list}
     <select bind:value={selected}>
       {#each list as item}
-        <option value={item.id}>{item.name}</option>
+        <option value={item.id}>{item.companyName}</option>
       {/each}
     </select>
   {:catch}
