@@ -1,7 +1,3 @@
 # .nowignore 
-*
-!static
-!static/
-!__sapper__
-!__sapper__/
+node_modules
 __sapper__/dev
