@@ -17,7 +17,9 @@ $ npm run dev
 
 Go to http://localhost:3000
 
-![image](https://user-images.githubusercontent.com/1509692/57934095-3ec3f280-7895-11e9-962f-bcc1de3e2303.png)
+![Products Page](https://user-images.githubusercontent.com/1509692/58277944-41c95200-7d71-11e9-980e-a32a7b3138ce.png)
+
+![Edit Product](https://user-images.githubusercontent.com/1509692/58277986-5efe2080-7d71-11e9-960e-06322be5971e.png)
 
 ## Backend
 
