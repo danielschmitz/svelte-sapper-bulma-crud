@@ -1,5 +1,7 @@
 <script>
   import Card from "../components/Card.svelte";
+  import CategorySelection from "../components/CategorySelection.svelte"
+
   import { onMount } from "svelte";
   import http from "../http";
 
@@ -21,7 +23,9 @@
 
   async function getProducts() {
     // a simple use of "fetch"
-    const result = await fetch("https://northwind.now.sh/api/products/?_expand=category&_expand=supplier");
+    const result = await fetch(
+      "https://northwind.now.sh/api/products/?_expand=category&_expand=supplier"
+    );
 
     if (result.ok) return result.json();
 
@@ -37,8 +41,8 @@
 
   async function onDeleteClick(item) {
     product = item;
-    if (confirm(`Delete "${product.name}"?`)){
-      await http.delete(`/products/${product.id}`)
+    if (confirm(`Delete "${product.name}"?`)) {
+      await http.delete(`/products/${product.id}`);
       products = getProducts();
     }
   }
@@ -53,10 +57,10 @@
 
   function onNewClick() {
     product = {
-      name: '',
-      description: ''
-    }
-    openModal()
+      name: "",
+      description: ""
+    };
+    openModal();
   }
 
   async function save() {
@@ -125,7 +129,13 @@
     {/await}
 
   </div>
-    <a href="javascript:;" slot="footer" class="card-footer-item" on:click={onNewClick}>New</a>
+  <a
+    href="javascript:;"
+    slot="footer"
+    class="card-footer-item"
+    on:click={onNewClick}>
+    New
+  </a>
 </Card>
 
 <div class={modalClass}>
@@ -147,14 +157,46 @@
         </div>
       </div>
       <div class="field">
-        <label class="label">Description</label>
+        <label class="label">Category</label>
         <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder=""
-            bind:value={product.description} />
+            <CategorySelection bind:selected={product.categoryId}/>
         </div>
+      </div>
+      <div class="columns is-desktop">
+        <div class="column field">
+          <label class="label">Quantity Per Unit</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder=""
+              bind:value={product.quantityPerUnit} />
+          </div>
+        </div>
+        <div class="column field">
+          <label class="label">Unit Price</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder=""
+              bind:value={product.unitPrice} />
+          </div>
+        </div>
+        <div class="column field">
+          <label class="label">Unit in Stock</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder=""
+              bind:value={product.unitsInStock} />
+          </div>
+        </div>
+
+
+
+
       </div>
     </section>
     <footer class="modal-card-foot">
