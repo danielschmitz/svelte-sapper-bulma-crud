@@ -1,6 +1,7 @@
 <script>
   import Card from "../components/Card.svelte";
-  import CategorySelection from "../components/CategorySelection.svelte"
+  import CategorySelection from "../components/CategorySelection.svelte";
+  import SupplierSelection from "../components/SupplierSelection.svelte";
 
   import { onMount } from "svelte";
   import http from "../http";
@@ -156,10 +157,18 @@
             bind:value={product.name} />
         </div>
       </div>
-      <div class="field">
-        <label class="label">Category</label>
-        <div class="control">
-            <CategorySelection bind:selected={product.categoryId}/>
+      <div class="columns is-desktop">
+        <div class="column field">
+          <label class="label">Category</label>
+          <div class="control">
+            <CategorySelection bind:selected={product.categoryId} />
+          </div>
+        </div>
+        <div class="column field">
+          <label class="label">Supplier</label>
+          <div class="control">
+            <SupplierSelection bind:selected={product.supplierId} />
+          </div>
         </div>
       </div>
       <div class="columns is-desktop">
@@ -193,9 +202,6 @@
               bind:value={product.unitsInStock} />
           </div>
         </div>
-
-
-
 
       </div>
     </section>
