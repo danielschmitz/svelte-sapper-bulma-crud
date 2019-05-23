@@ -1,3 +1,18 @@
+#### 0.0.3 (2019-05-23)
+
+##### New Features
+
+*  Products crud page (106a0812)
+*  A new Component: SupplierSelection (c4f72e99)
+*  A new component: CategorySelection (c7b5814f)
+*  List Products (9ebffa97)
+*  New item: Products (43498114)
+
+##### Bug Fixes
+
+*  Supplier name on selection (1280ae6d)
+*  Title of Home and About pages shows correctly (eabee78c)
+
 #### 0.0.2 (2019-05-21)
 
 ##### New Features
