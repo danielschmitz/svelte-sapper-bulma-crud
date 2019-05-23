@@ -202,8 +202,14 @@
               bind:value={product.unitsInStock} />
           </div>
         </div>
-
       </div>
+      <div class="field">
+        <label class="label">
+          Discontinued 
+          <input type="checkbox" bind:checked={product.discontinued} />
+        </label>
+      </div>
+
     </section>
     <footer class="modal-card-foot">
       <button class={buttonSaveClass} on:click={save}>Save changes</button>
