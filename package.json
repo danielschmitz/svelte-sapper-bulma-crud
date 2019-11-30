@@ -4,8 +4,7 @@
   "version": "0.0.3",
   "scripts": {
     "dev": "sapper dev",
-    "now": "sapper build && now",
-    "b": "sapper build",
+    "build": "sapper build",
     "changelog": "npx generate-changelog",
     "export": "sapper export",
     "start": "node __sapper__/build",
