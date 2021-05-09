@@ -25,6 +25,16 @@ Go to http://localhost:3000
 
 This CRUD uses northwind API: http://northwind.now.sh
 
+## Stay updated about my books and cruds
+
+<p> Follow this accounts (low traffic, just book and crud updates) </p>
+
+<ul>
+  <li> <a href="https://twitter.com/DanielSchmBooks" target="_blank">Twitter</a></li>
+  <li> <a href="https://www.instagram.com/danielschmitzbooks/" target="_blank">Instagram</a></li>
+  <li> <a href="https://www.youtube.com/c/DanielSchmitz/" target="_blank">Youtube</a></li>
+</ul>
+
 ## Roadmap
 
 See this [issue](https://github.com/danielschmitz/svelte-sapper-bulma-crud/issues/1)
